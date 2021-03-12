@@ -9,9 +9,6 @@ jobs:
     - name: get v8
       env:
         DEPTOOLS: https://chromium.googlesource.com/chromium/tools/depot_tools.git
-        FIRST_NAME: Mona
-        MIDDLE_NAME: The
-        LAST_NAME: Octocat
       run: |
         echo get v8
         cd ~/work
@@ -28,6 +25,8 @@ jobs:
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.ref }}
         file: ~/work/v8.tgz
         asset_name: v8
         overwrite: true
