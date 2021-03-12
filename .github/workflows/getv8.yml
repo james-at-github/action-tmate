@@ -1,0 +1,37 @@
+name: get v8
+on: push
+
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: get v8
+      env:
+        DEPTOOLS: https://chromium.googlesource.com/chromium/tools/depot_tools.git
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+        echo get v8
+        cd ~/work
+        mkdir v8
+        cd v8
+        git clone $DEPTOOLS
+        export PATH=~/work/v8/depot_tools:$PATH
+        cd depot_tools
+        ./gclient
+        cd ..
+        fetch v8
+        cd ..
+        tar -czvf v8.tgz v8
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: ~/work/v8.tgz
+        asset_name: v8
+        overwrite: true
+        body: "v8"
+       
+       
+        
