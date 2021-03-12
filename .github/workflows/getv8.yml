@@ -12,15 +12,15 @@ jobs:
       run: |
         echo get v8
         cd ~/work
-        mkdir v8
-        cd v8
+        mkdir ~/work/v8
+        cd ~/work/v8
         git clone $DEPTOOLS
         export PATH=~/work/v8/depot_tools:$PATH
-        cd depot_tools
+        cd ~/work/v8/depot_tools
         ./gclient
-        cd ..
+        cd ~/work/v8
         fetch v8
-        cd ..
+        ~/work
         tar -czvf v8.tgz v8
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
