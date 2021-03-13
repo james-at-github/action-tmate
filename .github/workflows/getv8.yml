@@ -15,10 +15,9 @@ jobs:
         mkdir ~/work/v8
         cd ~/work/v8
         git clone $DEPTOOLS
-        export PATH=~/work/v8/depot_tools:$PATH
+        export PATH=$PATH:~/work/v8/depot_tools
         cd ~/work/v8/depot_tools
-        ./gclient
-        cd ~/work/v8
+        ./gclient        
         fetch v8
         ~/work
         tar -czvf v8.tgz v8
