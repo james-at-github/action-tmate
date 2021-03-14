@@ -13,7 +13,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ github.ref }}
-        file: /home/runner/work/v8.tgz
+        file: /home/runner/work/v8.7z.*
         asset_name: v8
         overwrite: true
         body: "v8"
